@@ -1,0 +1,5 @@
+{:type :aws-s3-download,
+ :supertype :tasklet,
+ :description "Downloads a file from s3 bucket to job directory under the specified name.",
+ :properties {:key "index.html", :credentials {:access-key "", :secret-key "", :endpoint "eu-central-1"}, :save-as "", :bucket ""},
+ :workload-fn #titanoboa.exp.Expression{:value "(fn [{:keys [credentials save-as bucket key]}] \n  ((-> (amazonica.aws.s3transfer/download credentials  bucket key\n                                          (java.io.File. *jobdir* (if-not (empty? save-as) save-as  key)))\n      :wait-for-completion)))", :type "clojure"}}

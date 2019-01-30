@@ -1,0 +1,5 @@
+{:type        :aws-s3-upload,
+ :supertype   :tasklet,
+ :description "Uploads specified file from job directory into the given s3 bucket.",
+ :properties  {:key "index.bkp", :credentials {:access-key "", :secret-key "", :endpoint "eu-central-1"}, :file-name "index.html", :bucket ""},
+ :workload-fn #titanoboa.exp.Expression{:value "(fn [{:keys [credentials file-name bucket key]}] \n  ((-> (amazonica.aws.s3transfer/upload credentials bucket key\n                                          (java.io.File. *jobdir* (if-not (empty? file-name) file-name  key)))\n      :wait-for-completion)))", :type "clojure"}}
