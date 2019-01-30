@@ -1,5 +1,5 @@
 {:type :aws-s3-read,
  :supertype :tasklet,
  :description "Reads textual content of a s3 file and returns it as a job property :s3-object",
- :workload-fn #titanoboa.exp.Expression{:value "(fn [credentials bucket key] \n {:s3-object (-> (amazonica.aws.s3/get-objectcredentials bucket key)\n                              :input-stream\n                              slurp)})", :type "clojure"}
+ :workload-fn #titanoboa.exp.Expression{:value "io.titanoboa.tasklet.aws.s3/read", :type "clojure"}
  :properties {:key "index.html", :credentials {:access-key "", :secret-key "", :endpoint "eu-central-1"}, :bucket ""}}

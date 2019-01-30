@@ -1,0 +1,5 @@
+{:type :aws-ec2-list,
+ :supertype :tasklet,
+ :description "Lists all EC2 instances for all reservations.\nReturns :ec2-instances key with list of instances as a value:\n{:ec2-instances [{instance1 map} {instance2 map} ...]}",
+ :properties {:credentials {:access-key "", :secret-key "", :endpoint "eu-central-1"}},
+ :workload-fn #titanoboa.exp.Expression{:value "io.titanoboa.tasklet.aws.ec2/list-instances", :type "clojure"}}

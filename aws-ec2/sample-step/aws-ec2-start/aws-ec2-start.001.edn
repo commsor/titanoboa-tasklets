@@ -1,0 +1,6 @@
+{:type :aws-ec2-start,
+ :supertype :tasklet,
+ :description "Starts an EC2 instance.\nReturns :starting-instances key with status value map.",
+ :workload-fn #titanoboa.exp.Expression{:value "io.titanoboa.tasklet.aws.ec2/start-instances", :type "clojure"}
+ :properties {:credentials {:access-key "", :secret-key "", :endpoint "eu-central-1"}, :instance-ids ["i-0a123a454b678aeb6"]}
+}
