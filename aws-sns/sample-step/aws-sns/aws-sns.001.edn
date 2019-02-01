@@ -1,0 +1,9 @@
+{:type :aws-sns,
+ :supertype :tasklet,
+ :description "Publishes a message into an SNS topic.",
+ :workload-fn #titanoboa.exp/Expression{:value "io.titanoboa.tasklet.aws.sns/publish",
+                                        :type "clojure"},
+ :properties  {:topic-arn "arn:aws:sns:us-east-1:676820690883:my-topic",
+               :subject "test",
+               :message "",
+               :message-attributes {"attr" "value"}}}

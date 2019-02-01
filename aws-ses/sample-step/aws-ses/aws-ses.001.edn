@@ -1,0 +1,6 @@
+{:type :aws-ses,
+ :supertype :tasklet,
+ :description "Sends an email via SES.\nReturns :message-id key with message id value.\n",
+ :properties {:credentials {:access-key "", :secret-key "", :endpoint "eu-west-1"}, :from "info@titanoboa.io",
+              :message {:body {:html "testing 1-2-3-4", :text "testing 1-2-3-4"}, :subject "greetings from titanoboa"}, :to ["miro@titanoboa.io"]},
+ :workload-fn #titanoboa.exp.Expression{:value "io.titanoboa.tasklet.aws.ses/send-email", :type "clojure"}}

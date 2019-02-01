@@ -10,10 +10,10 @@
 
 (defn download [{:keys [credentials save-as bucket key]}]
     ((-> (s3transfer/download credentials  bucket key
-                                            (java.io.File. titanoboa.exp/*jobdir* (if-not (empty? save-as) save-as  key)))
+                                            (java.io.File. save-as))
          :wait-for-completion)))
 
-(defn upload [{:keys [credentials file-name bucket key]}]
+(defn upload [{:keys [credentials file-path bucket key]}]
     ((-> (amazonica.aws.s3transfer/upload credentials bucket key
-                                          (java.io.File. titanoboa.exp/*jobdir* (if-not (empty? file-name) file-name  key)))
+                                          (java.io.File. file-path))
          :wait-for-completion)))

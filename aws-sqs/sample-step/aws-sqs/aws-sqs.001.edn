@@ -1,0 +1,11 @@
+{:type :aws-sqs,
+ :supertype :tasklet,
+ :description "Sends a text message to a queue.",
+ :workload-fn #titanoboa.exp/Expression{:value "io.titanoboa.tasklet.aws.sqs/send-message",
+                                        :type "clojure"},
+ :properties {:credentials {:access-key "",
+                            :secret-key "",
+                            :endpoint "eu-central-1"},
+              :message-attributes {},
+              :message-body "",
+              :queue-url ""}}
