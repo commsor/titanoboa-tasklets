@@ -4,7 +4,8 @@
 # Titanoboa Step Functions
 This repository contains sample ready-made steps for [titanoboa](https://titanoboa.io) (github repository is [here](https://github.com/mikub/titanoboa) ).
 
-## PDF
+## PDF <img width="28" height="28" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/pdf-generation.svg"/>
+
 Generates a pdf file based on job properties. Primarily uses [clj-pdf](https://github.com/clj-pdf/clj-pdf) library. Refer to the library's documentation for detailed information on the generation process and all supported properties.
 
 ## Installation
@@ -17,8 +18,7 @@ io.titanoboa.tasklet.pdf/generate-pdf
 ```
 ### Sample Properties
 ```clojure
-{:pdf-sections [{}
-   [:list {:roman true}
+{:pdf-sections [[:list {:roman true}
           [:chunk {:style :bold} "a bold item"]
           "another item"
           "yet another item"]
@@ -33,8 +33,7 @@ io.titanoboa.tasklet.pdf/generate-pdf
 {:type :pdf-generation
  :supertype :tasklet
  :properties
- {:pdf-sections [{}
-   [:list {:roman true}
+ {:pdf-sections [[:list {:roman true}
           [:chunk {:style :bold} "a bold item"]
           "another item"
           "yet another item"]
