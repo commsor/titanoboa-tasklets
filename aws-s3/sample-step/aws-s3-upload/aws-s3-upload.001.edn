@@ -1,5 +1,5 @@
 {:type        :aws-s3-upload,
  :supertype   :tasklet,
  :description "Uploads specified file from job directory into the given s3 bucket.",
- :properties  {:key "index.bkp", :credentials {:access-key "", :secret-key "", :endpoint "eu-central-1"}, :file-name "index.html", :bucket ""},
+ :properties  {:key "index.bkp", :credentials {:access-key "", :secret-key "", :endpoint "eu-central-1"}, :file-path "index.html", :bucket ""},
  :workload-fn #titanoboa.exp.Expression{:value "io.titanoboa.tasklet.aws.s3/upload", :type "clojure"}}
