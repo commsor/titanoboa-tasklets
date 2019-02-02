@@ -57,7 +57,58 @@ io.titanoboa.tasklet.aws.ec2/stop-instances
  :workload-fn #titanoboa.exp.Expression{:value "io.titanoboa.tasklet.aws.ec2/stop-instances", :type "clojure"}
 }
 ```
+---
+---
+## AWS S3 <img width="28" height="28" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/aws-s3.svg"/>
 
+Provides functions to read, download and upload S3 objects. Primarily uses [amazonica](https://github.com/mcohen01/amazonica) library. Refer to the library's documentation for detailed information on the supported properties.
+
+### Installation
+ 1. Add following maven coordinates into titanoboa's external dependencies file: [![Clojars Project](https://img.shields.io/clojars/v/io.titanoboa.tasklet/aws-s3.svg)](https://clojars.org/io.titanoboa.tasklet/aws-s3)
+ 2. Require namespace: `io.titanoboa.tasklet.aws.s3`
+
+### Usage
+#### Read S3 Object
+#### :workload-fn
+```clojure
+io.titanoboa.tasklet.aws.s3/read
+```
+#### Sample Step Definition
+```clojure
+{:type :aws-s3-read,
+ :supertype :tasklet,
+ :description "Reads textual content of a s3 file and returns it as a job property :s3-object",
+ :workload-fn #titanoboa.exp.Expression{:value "io.titanoboa.tasklet.aws.s3/read", :type "clojure"}
+ :properties {:key "index.html", :credentials {:access-key "", :secret-key "", :endpoint "eu-central-1"}, :bucket ""}}
+ ```
+ ---
+ #### Download S3 Object
+#### :workload-fn
+```clojure
+io.titanoboa.tasklet.aws.s3/download
+```
+#### Sample Step Definition
+```clojure
+{:type :aws-s3-download,
+ :supertype :tasklet,
+ :description "Downloads a file from s3 bucket to job directory under the specified name.",
+ :properties {:key "index.html", :credentials {:access-key "", :secret-key "", :endpoint "eu-central-1"}, :save-as "path/to/file", :bucket "bucket-name"},
+ :workload-fn #titanoboa.exp.Expression{:value "io.titanoboa.tasklet.aws.s3/download", :type "clojure"}}
+```
+ ---
+ #### Upload S3 Object
+#### :workload-fn
+```clojure
+io.titanoboa.tasklet.aws.s3/upload
+```
+#### Sample Step Definition
+```clojure
+{:type        :aws-s3-upload,
+ :supertype   :tasklet,
+ :description "Uploads specified file from job directory into the given s3 bucket.",
+ :properties  {:key "index.bkp", :credentials {:access-key "", :secret-key "", :endpoint "eu-central-1"}, :file-path "index.html", :bucket ""},
+ :workload-fn #titanoboa.exp.Expression{:value "io.titanoboa.tasklet.aws.s3/upload", :type "clojure"}}
+```
 ---
 ---
 
