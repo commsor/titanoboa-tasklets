@@ -4,9 +4,12 @@
 # Titanoboa Step Functions
 This repository contains sample ready-made steps for [titanoboa](https://titanoboa.io) (github repository is [here](https://github.com/mikub/titanoboa) ).
 
-[AWS EC2](#AWS-EC2) <img width="28" height="28" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/aws-ec2.svg"/> <br>
-[AWS S3](#AWS-S3) <img width="28" height="28" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/aws-s3.svg"/> <br>
-[PDF Generation](#PDF)  <img width="28" height="28" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/pdf-generation.svg"/><br>
+[AWS EC2](#AWS-EC2) <img width="28" height="28" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/aws-ec2.svg"/>
+
+[AWS S3](#AWS-S3) <img width="28" height="28" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/aws-s3.svg"/> 
+
+[PDF Generation](#PDF) <img width="28" height="28" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/pdf-generation.svg"/>
+
 
 
 ## AWS EC2 <img width="28" height="28" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/aws-ec2.svg"/>
