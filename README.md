@@ -5,9 +5,11 @@
 This repository contains sample ready-made steps for [titanoboa](https://titanoboa.io) (github repository is [here](https://github.com/mikub/titanoboa) ).
 
 ## PDF
-[![Clojars Project](https://img.shields.io/clojars/v/io.titanoboa.tasklet/pdf.svg)](https://clojars.org/io.titanoboa.tasklet/pdf)
-
 Generates a pdf file based on job properties. Primarily uses [clj-pdf](https://github.com/clj-pdf/clj-pdf) library. Refer to the library's documentation for detailed information on the generation process and all supported properties.
+
+## Installation
+ 1. Add following maven coordinates into titanoboa's external dependencies file: [![Clojars Project](https://img.shields.io/clojars/v/io.titanoboa.tasklet/pdf.svg)](https://clojars.org/io.titanoboa.tasklet/pdf)
+ 2. Require namespace: `io.titanoboa.tasklet.pdf`
 
 ### :workload-fn
 ```clojure
