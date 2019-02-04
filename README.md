@@ -20,6 +20,10 @@ AWS <img width="28" height="28" align="left" src="https://github.com/mikub/titan
 
 [Smtp Client](#smtp-client-) <img width="28" height="28" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/smtp.svg"/>
 
+[SFTP Client](#ssh-and-sftp-) <img width="28" height="28" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/custom.svg"/>
+
+[SSH Client](#ssh-and-sftp-) <img width="28" height="28" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/custom.svg"/>
+
 [PDF Generation](#pdf-) <img width="28" height="28" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/pdf-generation.svg"/>
 
 
@@ -290,6 +294,36 @@ titanoboa.tasklet.smtp/send
                               :content #titanoboa.exp/Expression{:value "(File. \"/tmp/lester-upside-down.jpeg\")"}}]}}}              
  ```
  
+ ---
+ ---
+ 
+   ## SSH and SFTP <img width="28" height="28" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/custom.svg"/>
+
+SSH and SFTP Client. Primarily uses [clj-ssh](https://github.com/hugoduncan/clj-ssh) library. Refer to the library's documentation for detailed information on the generation process and all supported properties.
+
+### Installation
+ 1. Add following maven coordinates into titanoboa's external dependencies file: [![Clojars Project](https://img.shields.io/clojars/v/io.titanoboa.tasklet/ssh.svg)](https://clojars.org/io.titanoboa.tasklet/ssh)
+ 2. Require namespace: `io.titanoboa.tasklet.ssh`
+
+### Usage
+#### SSH
+#### :workload-fn
+```clojure
+io.titanoboa.tasklet.ssh/ssh
+```
+#### Sample Step Definition
+```clojure
+ ```
+
+#### SFTP
+#### :workload-fn
+```clojure
+io.titanoboa.tasklet.ssh/sftp
+```
+#### Sample Step Definition
+```clojure
+ ```
+
  ---
  ---
  
