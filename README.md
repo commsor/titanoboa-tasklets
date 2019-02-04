@@ -16,6 +16,10 @@ AWS <img width="28" height="28" align="left" src="https://github.com/mikub/titan
 
 * [AWS SQS](#aws-sqs-) <img width="28" height="28" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/aws-sqs.svg"/> 
 
+[Http Client](#http-client-) <img width="28" height="28" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/http-client.svg"/>
+
+[Smtp Client](#smtp-client-) <img width="28" height="28" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/smtp.svg"/>
+
 [PDF Generation](#pdf-) <img width="28" height="28" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/pdf-generation.svg"/>
 
 
@@ -208,6 +212,84 @@ io.titanoboa.tasklet.aws.sqs/send-message
               :message-body "",
               :queue-url ""}}
  ```
+ 
+ ---
+ ---
+ 
+## Http Client <img width="28" height="28" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/http-client.svg"/>
+
+Makes an http(s) call and returns (parsed) response. Primarily uses [clj-http](https://github.com/dakrone/clj-http) library. Refer to the library's documentation for detailed information on the generation process and all supported properties.
+
+### Installation
+ 1. Add following maven coordinates into titanoboa's external dependencies file: [![Clojars Project](https://img.shields.io/clojars/v/io.titanoboa.tasklet/http-client.svg)](https://clojars.org/io.titanoboa.tasklet/http-client)
+ 2. Require namespace: `io.titanoboa.tasklet.httpclient`
+
+### Usage
+#### :workload-fn
+```clojure
+io.titanoboa.tasklet.httpclient/request
+```
+#### Sample Step Definition
+```clojure
+{:type :http-client
+ :supertype :tasklet
+ :workload-fn #titanoboa.exp/Expression{:value "io.titanoboa.tasklet.httpclient/request" :type "clojure"}
+ :properties {:url "https://jsonplaceholder.typicode.com/posts/1"
+              :request-method :get
+              :as :json
+              :proxy-host "127.0.0.1"
+              :proxy-port 8118
+              :response-property-name :rest-response
+              :body-only? false
+              :connection-pool {:timeout 5 :threads 4 :insecure? false :default-per-route 10}}}
+              
+ ```
+ 
+ ---
+ ---
+ 
+ ## Smtp Client <img width="28" height="28" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/smtp.svg"/>
+
+Sends email via smtp. Primarily uses [postal](https://github.com/drewr/postal) library. Refer to the library's documentation for detailed information on the generation process and all supported properties.
+
+### Installation
+ 1. Add following maven coordinates into titanoboa's external dependencies file: [![Clojars Project](https://img.shields.io/clojars/v/io.titanoboa.tasklet/smtp.svg)](https://clojars.org/io.titanoboa.tasklet/smtp)
+ 2. Require namespace: `io.titanoboa.tasklet.smtp`
+
+### Usage
+#### :workload-fn
+```clojure
+titanoboa.tasklet.smtp/send
+```
+#### Sample Step Definition
+```clojure
+{:type :smtp
+ :supertype :tasklet
+ :workload-fn #titanoboa.exp/Expression{:value "titanoboa.tasklet.smtp/send"}
+ :properties {:connection {:host "localhost"
+                           :port 25
+                           :user ""
+                           :pass ""
+                           :ssl false
+                           :tls false}
+              :email {:from "miro@example.bla"
+                      :to "joe@example.com"
+                      :cc ["joe@example.com", "jim@example.com", "jeff@example.com"]
+                      :bcc "archive@example.com"
+                      :subject "Cat!"
+                      :date #titanoboa.exp/Expression{:value "(java.util.Date.)"}
+                      :message-id ""
+                      :user-agent ""
+                      :body [{:type "text/plain"
+                              :content "Hey folks,\n\nCheck out these pictures of my cat!"}
+                             {:type :inline
+                              :content #titanoboa.exp/Expression{:value "(File. \"/tmp/lester-flying-photoshop\")"}
+                              :content-type "image/jpeg"
+                              :file-name "lester-flying.jpeg"}
+                             {:type :attachment
+                              :content #titanoboa.exp/Expression{:value "(File. \"/tmp/lester-upside-down.jpeg\")"}}]}}}              
+ ```
+ 
  ---
  ---
  
