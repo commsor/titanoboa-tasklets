@@ -10,6 +10,12 @@ AWS <img width="28" height="28" align="left" src="https://github.com/mikub/titan
 
 * [AWS S3](#aws-s3-) <img width="28" height="28" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/aws-s3.svg"/> 
 
+* [AWS SES](#aws-ses-) <img width="28" height="28" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/aws-ses.svg"/> 
+
+* [AWS SNS](#aws-sns-) <img width="28" height="28" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/aws-sns.svg"/> 
+
+* [AWS SQS](#aws-sqs-) <img width="28" height="28" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/aws-sqs.svg"/> 
+
 [PDF Generation](#pdf-) <img width="28" height="28" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/pdf-generation.svg"/>
 
 
@@ -122,6 +128,89 @@ io.titanoboa.tasklet.aws.s3/upload
 ---
 ---
 
+## AWS SES <img width="28" height="28" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/aws-ses.svg"/>
+
+Provides functions to send email via AWS SES. Primarily uses [amazonica](https://github.com/mcohen01/amazonica) library. Refer to the library's documentation for detailed information on the supported properties.
+
+### Installation
+ 1. Add following maven coordinates into titanoboa's external dependencies file: [![Clojars Project](https://img.shields.io/clojars/v/io.titanoboa.tasklet/aws-ses.svg)](https://clojars.org/io.titanoboa.tasklet/aws-ses)
+ 2. Require namespace: `io.titanoboa.tasklet.aws.ses`
+
+### Usage
+#### :workload-fn
+```clojure
+io.titanoboa.tasklet.aws.ses/send-email
+```
+#### Sample Step Definition
+```clojure
+{:type :aws-ses,
+ :supertype :tasklet,
+ :description "Sends an email via SES.\nReturns :message-id key with message id value.\n",
+ :properties {:credentials {:access-key "", :secret-key "", :endpoint "eu-west-1"}, :from "info@titanoboa.io",
+              :message {:body {:html "testing 1-2-3-4", :text "testing 1-2-3-4"}, :subject "greetings from titanoboa"}, :to ["miro@titanoboa.io"]},
+ :workload-fn #titanoboa.exp.Expression{:value "io.titanoboa.tasklet.aws.ses/send-email", :type "clojure"}} 
+ ```
+ ---
+ ---
+ 
+ ## AWS SNS <img width="28" height="28" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/aws-sns.svg"/>
+
+Provides functions to send notification via AWS SNS. Primarily uses [amazonica](https://github.com/mcohen01/amazonica) library. Refer to the library's documentation for detailed information on the supported properties.
+
+### Installation
+ 1. Add following maven coordinates into titanoboa's external dependencies file: [![Clojars Project](https://img.shields.io/clojars/v/io.titanoboa.tasklet/aws-sns.svg)](https://clojars.org/io.titanoboa.tasklet/aws-sns)
+ 2. Require namespace: `io.titanoboa.tasklet.aws.sns`
+
+### Usage
+#### :workload-fn
+```clojure
+io.titanoboa.tasklet.aws.sns/publish
+```
+#### Sample Step Definition
+```clojure
+{:type :aws-sns,
+ :supertype :tasklet,
+ :description "Publishes a message into an SNS topic.",
+ :workload-fn #titanoboa.exp/Expression{:value "io.titanoboa.tasklet.aws.sns/publish",
+                                        :type "clojure"},
+ :properties  {:topic-arn "arn:aws:sns:us-east-1:676820690883:my-topic",
+               :subject "test",
+               :message "",
+               :message-attributes {"attr" "value"}}}
+ ```
+ ---
+ ---
+ 
+ ## AWS SQS <img width="28" height="28" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/aws-sqs.svg"/>
+
+Provides functions to send message via AWS SQS. Primarily uses [amazonica](https://github.com/mcohen01/amazonica) library. Refer to the library's documentation for detailed information on the supported properties.
+
+### Installation
+ 1. Add following maven coordinates into titanoboa's external dependencies file: [![Clojars Project](https://img.shields.io/clojars/v/io.titanoboa.tasklet/aws-sqs.svg)](https://clojars.org/io.titanoboa.tasklet/aws-sqs)
+ 2. Require namespace: `io.titanoboa.tasklet.aws.sqs`
+
+### Usage
+#### :workload-fn
+```clojure
+io.titanoboa.tasklet.aws.sqs/send-message
+```
+#### Sample Step Definition
+```clojure
+{:type :aws-sqs,
+ :supertype :tasklet,
+ :description "Sends a text message to a queue.",
+ :workload-fn #titanoboa.exp/Expression{:value "io.titanoboa.tasklet.aws.sqs/send-message",
+                                        :type "clojure"},
+ :properties {:credentials {:access-key "",
+                            :secret-key "",
+                            :endpoint "eu-central-1"},
+              :message-attributes {},
+              :message-body "",
+              :queue-url ""}}
+ ```
+ ---
+ ---
+ 
 ## PDF <img width="28" height="28" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/pdf-generation.svg"/>
 
 Generates a pdf file based on job properties. Primarily uses [clj-pdf](https://github.com/clj-pdf/clj-pdf) library. Refer to the library's documentation for detailed information on the generation process and all supported properties.
