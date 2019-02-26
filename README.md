@@ -226,7 +226,7 @@ Makes an http(s) call and returns (parsed) response. Primarily uses [clj-http](h
 
 ### Installation
  1. Add following maven coordinates into titanoboa's external dependencies file: [![Clojars Project](https://img.shields.io/clojars/v/io.titanoboa.tasklet/http-client.svg)](https://clojars.org/io.titanoboa.tasklet/http-client)
- 2. Require namespace: `io.titanoboa.tasklet.httpclient`
+ 2. Require namespace: `io.titanoboa.tasklet.http-client`
 
 ### Usage
 #### :workload-fn
