@@ -315,13 +315,13 @@ io.titanoboa.tasklet.ssh/ssh
 ```clojure
 {:type :ssh,
  :supertype :tasklet,
- :description "SFTP Client",
+ :description "SSH Client",
  :properties {:ssh-agent-settings {:use-system-ssh-agent false}, 
               :identities {:private-key-path "/path/to/key.pem"}, 
                :ssh-cmd-map {:in "echo hello"}, 
                :host "xxx.eu-central-1.compute.amazonaws.com", 
                :session-options {:username "ec2-user", :strict-host-key-checking "no", :preferred-authentications "publickey"}},
-               :workload-fn #titanoboa.exp.Expression{:value "io.titanoboa.tasklet.ssh/ssh", :type "clojure"}}
+ :workload-fn #titanoboa.exp.Expression{:value "io.titanoboa.tasklet.ssh/ssh", :type "clojure"}}
  ```
 
 #### SFTP
