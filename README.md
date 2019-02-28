@@ -22,7 +22,7 @@ AWS <img width="28" height="28" align="left" src="https://github.com/mikub/titan
 
 [SFTP Client](#ssh-and-sftp-) <img width="28" height="28" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/custom.svg"/>
 
-[SSH Client](#ssh-and-sftp-) <img width="28" height="28" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/cluster.svg"/>
+[SSH Client](#ssh-and-sftp-) <img width="28" height="28" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/ssh.svg"/>
 
 [PDF Generation](#pdf-) <img width="28" height="28" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/pdf-generation.svg"/>
 
@@ -297,7 +297,7 @@ titanoboa.tasklet.smtp/send
  ---
  ---
  
-   ## SSH and SFTP <img width="28" height="28" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/cluster.svg"/>
+   ## SSH and SFTP <img width="28" height="28" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/ssh.svg"/>
 
 SSH and SFTP Client. Primarily uses [clj-ssh](https://github.com/hugoduncan/clj-ssh) library. Refer to the library's documentation for detailed information on the generation process and all supported properties.
 
