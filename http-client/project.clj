@@ -1,4 +1,4 @@
-(defproject io.titanoboa.tasklet/http-client "0.1.0"
+(defproject io.titanoboa.tasklet/http-client "0.1.1"
   :description "http client step function for titanoboa.io"
   :url "https://titanoboa.io"
   :license {:name "unlicense"
