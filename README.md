@@ -22,7 +22,7 @@ AWS <img width="28" height="28" align="left" src="https://github.com/mikub/titan
 
 [SFTP Client](#ssh-and-sftp-) <img width="28" height="28" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/custom.svg"/>
 
-[SSH Client](#ssh-and-sftp-) <img width="28" height="28" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/ssh.svg"/>
+[SSH Client](#ssh-and-sftp-) <img width="26" height="26" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/ssh.svg"/>
 
 [PDF Generation](#pdf-) <img width="28" height="28" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/pdf-generation.svg"/>
 
