@@ -226,7 +226,7 @@ Makes an http(s) call and returns (parsed) response. Primarily uses [clj-http](h
 
 ### Installation
  1. Add following maven coordinates into titanoboa's external dependencies file: [![Clojars Project](https://img.shields.io/clojars/v/io.titanoboa.tasklet/http-client.svg)](https://clojars.org/io.titanoboa.tasklet/http-client)
- 2. Require namespace: `io.titanoboa.tasklet.http-client`
+ 2. Require namespace: `io.titanoboa.tasklet.httpclient`
 
 ### Usage
 #### :workload-fn
@@ -313,6 +313,15 @@ io.titanoboa.tasklet.ssh/ssh
 ```
 #### Sample Step Definition
 ```clojure
+{:type :sftp,
+ :supertype :tasklet,
+ :description "SFTP Client",
+ :properties {:ssh-agent-settings {:use-system-ssh-agent false}, 
+              :identities {:private-key-path "/path/to/key.pem"}, 
+               :ssh-cmd-map {:in "echo hello"}, 
+               :host "xxx.eu-central-1.compute.amazonaws.com", 
+               :session-options {:username "ec2-user", :strict-host-key-checking "no", :preferred-authentications "publickey"}},
+               :workload-fn #titanoboa.exp.Expression{:value "io.titanoboa.tasklet.ssh/ssh", :type "clojure"}}
  ```
 
 #### SFTP
@@ -322,6 +331,17 @@ io.titanoboa.tasklet.ssh/sftp
 ```
 #### Sample Step Definition
 ```clojure
+{:type :sftp,
+ :supertype :tasklet,
+ :description "SFTP Client",
+ :properties {:ssh-agent-settings {:use-system-ssh-agent false}, 
+               :identities {:private-key-path "/path/to/key.pem"}, 
+               :sftp-cmds-vec [[:ls "/home/ec2-user/"]], 
+               :host "xxx.eu-central-1.compute.amazonaws.com", 
+               :session-options {:username "ec2-user", 
+                                 :strict-host-key-checking "no", 
+                                 :preferred-authentications "publickey"}},
+ :workload-fn #titanoboa.exp.Expression{:value "io.titanoboa.tasklet.ssh/sftp", :type "clojure"}}
  ```
 
  ---
