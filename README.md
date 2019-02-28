@@ -313,7 +313,7 @@ io.titanoboa.tasklet.ssh/ssh
 ```
 #### Sample Step Definition
 ```clojure
-{:type :sftp,
+{:type :ssh,
  :supertype :tasklet,
  :description "SFTP Client",
  :properties {:ssh-agent-settings {:use-system-ssh-agent false}, 
