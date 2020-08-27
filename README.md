@@ -16,6 +16,8 @@ AWS <img width="28" height="28" align="left" src="https://github.com/mikub/titan
 
 * [AWS SQS](#aws-sqs-) <img width="28" height="28" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/aws-sqs.svg"/> 
 
+[JDBC Client](#jdbc-client-) <img width="28" height="28" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/jdbc.svg"/>
+
 [Http Client](#http-client-) <img width="28" height="28" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/http-client.svg"/>
 
 [Smtp Client](#smtp-client-) <img width="28" height="28" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/smtp.svg"/>
@@ -216,6 +218,44 @@ io.titanoboa.tasklet.aws.sqs/send-message
               :message-body "",
               :queue-url ""}}
  ```
+ 
+ ---
+ ---
+ 
+## JDBC Client <img width="28" height="28" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/jdbc.svg"/>
+
+Performs a JDBC query and returns corresponding data. Note that [code of jdbc tasklet](https://github.com/mikub/titanoboa/blob/master/src/clj/titanoboa/tasklet/jdbc.clj) is part of standard Titanoboa distribution and is not in this repository.
+
+### Installation
+ 1. Add whatever jdbc driver you need to use to titanoboa's ./lib folder
+ 2. Require namespace: `io.titanoboa.tasklet.jdbc` in titanoboa's external dependencies file. You may also need to require `titanoboa.system.jdbc/jdbc-pool` (see point 3.)
+ 3. Do not forget to also define and configure corresponding jdbc system for DB connection pooling in your [server configuration](https://github.com/mikub/titanoboa/wiki/Server-Configuration#server-properties) (in the second example there is a connection pool system :test-db that is using [`titanoboa.system.jdbc/jdbc-pool`](https://github.com/mikub/titanoboa/blob/master/src/clj/titanoboa/system/jdbc.clj)
+
+### Usage
+#### :workload-fn
+```clojure
+io.titanoboa.tasklet.jdbc/query
+```
+#### Sample Step Definition
+```clojure
+{:type :jdbc
+ :supertype :tasklet
+ :workload-fn #titanoboa.exp/Expression {:value "titanoboa.tasklet.jdbc/query"}
+ :properties {:response-property-name :db-data
+              :data-source-ks [:test-db :system :pool]
+              :query {:select [:o.ordernumber :o.TotalAmount :c.FirstName :c.LastName :c.City :c.Country],
+                      :from [[:customers :c]]
+                      :left-join [[:orders :o] [:= :c.id :o.customerid]]
+                      :order-by [[:o.totalamount :desc :nulls-last]]
+                      :limit 50}}}
+              
+ ```
+ 
+Expected step properties are as follows:
+
+- `:query` - either a query string or a map in [honeysql](https://github.com/seancorfield/honeysql) format
+- `:data-source-ks` key set pointing to the JDBC data source object among the running systems, when used with `titanoboa.system.jdbc/jdbc-pool` the format is  `[:< jdbc pool systemu> :system :pool]` so e.g. if the jdbc system is `:test-db` then it is `[:test-db :system :pool]` 
+- `:response-property-name` is self-explanatory
  
  ---
  ---
