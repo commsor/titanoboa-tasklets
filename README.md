@@ -4,7 +4,7 @@
 # Titanoboa Step Functions
 This repository contains sample ready-made steps for [titanoboa](https://titanoboa.io) (github repository is [here](https://github.com/mikub/titanoboa) ):
 
-AWS <img width="28" height="28" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/aws.svg"/>
+**AWS** <img width="28" height="28" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/aws.svg"/>
 
 * [AWS EC2](#aws-ec2-) <img width="28" height="28" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/aws-ec2.svg"/>
 
@@ -28,6 +28,9 @@ AWS <img width="28" height="28" align="left" src="https://github.com/mikub/titan
 
 [PDF Generation](#pdf-) <img width="28" height="28" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/pdf-generation.svg"/>
 
+🧬 **Bioinformatics** :microscope:
+
+* 🧬 [K-mer Count](#k-mer-count-)
 
 ---
 
@@ -432,7 +435,7 @@ io.titanoboa.tasklet.pdf/generate-pdf
  ---
  ---
  
-   ## K-mer count <img width="28" height="28" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/custom.svg"/>
+   ## 🧬 K-mer count
 
 Few simple functions to help with [K-mer](https://en.wikipedia.org/wiki/K-mer) counting and analysis of [FASTQ](https://en.wikipedia.org/wiki/FASTQ_format) data files. Also contains functions for splitter (map) and agregator (reduce) type of steps to help with massively parallel processing.
 
