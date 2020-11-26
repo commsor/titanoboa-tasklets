@@ -428,3 +428,46 @@ io.titanoboa.tasklet.pdf/generate-pdf
  :pdf-metadata {:bottom-margin 10, :creator "Jane Doe", :doc-header ["inspired by" "William Shakespeare"], :right-margin 50, :left-margin 10, :footer "page", :header "page header", :size "a4", :title "Test doc", :author "John Doe", :top-margin 20, :subject "Some subject"}}
  :workload-fn #titanoboa.exp.Expression{:value "io.titanoboa.tasklet.pdf/generate-pdf", :type "clojure"}}
 ```
+
+ ---
+ ---
+ 
+   ## K-mer count <img width="28" height="28" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/custom.svg"/>
+
+Few simple functions to help with [K-mer](https://en.wikipedia.org/wiki/K-mer) counting and analysis of [FASTQ](https://en.wikipedia.org/wiki/FASTQ_format) data files. Also contains functions for splitter (map) and agregator (reduce) type of steps to help with massively parallel processing.
+
+### Installation
+ 1. Add following maven coordinates into titanoboa's external dependencies file: [![Clojars Project](https://img.shields.io/clojars/v/io.titanoboa.tasklet/kmer.svg)](https://clojars.org/io.titanoboa.tasklet/kmer)
+ 2. Require namespace: `io.titanoboa.tasklet.kmer`
+
+### Usage
+#### K-Mer count
+#### :workload-fn
+```clojure
+io.titanoboa.tasklet.kmer/kmer-count
+```
+#### Sample Job Properties
+```clojure
+{:create-folder? false,
+              :fastq-file "/path/to/fastq/file",
+              :start 0,
+              :end 12,
+              :k 3,
+              :top-n 10}
+ ```
+
+#### Map/Reduce Steps
+#### Map :workload-fn
+```clojure
+io.titanoboa.tasklet.kmer/split-fastq
+```
+#### Reduce :workload-fn
+```clojure
+io.titanoboa.tasklet.kmer/reduce-kmers
+```
+#### Sample Job Properties
+```clojure
+{:fastq-file "/path/to/fastq/file",
+              :k 3,
+              :split-to 12}
+ ```
