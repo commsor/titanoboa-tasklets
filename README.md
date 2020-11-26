@@ -30,7 +30,7 @@ This repository contains sample ready-made steps for [titanoboa](https://titanob
 
 🧬 **Bioinformatics** :microscope:
 
-* 🧬 [K-mer Count](#k-mer-count-)
+* 🧬 [K-mer Count](#-k-mer-count)
 
 ---
 
