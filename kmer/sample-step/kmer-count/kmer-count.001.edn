@@ -1,0 +1,4 @@
+{:type :kmer-count,
+ :supertype :tasklet,
+ :properties {},
+ :workload-fn #titanoboa.exp.Expression{:value "io.titanoboa.tasklet.kmer/kmer-count", :type "clojure"}}
