@@ -474,3 +474,32 @@ io.titanoboa.tasklet.kmer/reduce-kmers
               :k 3,
               :split-to 12}
  ```
+
+#### Sample Map/Reduce Workflow Definition
+```clojure
+{:first-step "splitter",
+ :name "kmer-map-reduce",
+ :revision 4,
+ :type nil,
+ :properties {:fastq-file "/mnt/efs/sars2/WUR_run10_ADIV00040_ATTACTCG-CTTCGCCT-AHLLFHBBXX_L008_R1.fastq",
+              :k 3,
+              :split-to 12},
+ :steps [{:id "splitter",
+          :type :map,
+          :supertype :map,
+          :next [["*" "aggregator"]],
+          :workload-fn #titanoboa.exp/Expression{:value "io.titanoboa.tasklet.kmer/split-fastq",
+                                                 :type "clojure"},
+          :properties {:jobdef-name "k-mer-count",
+                       :sys-key :core,
+                       :standalone-system? false},
+          :revision 1}
+         {:id "aggregator",
+          :type :reduce,
+          :supertype :reduce,
+          :workload-fn #titanoboa.exp/Expression{:value "io.titanoboa.tasklet.kmer/reduce-kmers",
+                                                 :type "clojure"},
+          :next [],
+          :properties {:map-step-id "splitter", :commit-interval 100},
+          :revision 1}]}
+```
