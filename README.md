@@ -437,7 +437,9 @@ io.titanoboa.tasklet.pdf/generate-pdf
  
    ## 🧬 K-mer count
 
-Few simple functions to help with [K-mer](https://en.wikipedia.org/wiki/K-mer) counting and analysis of [FASTQ](https://en.wikipedia.org/wiki/FASTQ_format) data files. Also contains functions for splitter (map) and agregator (reduce) type of steps to help with massively parallel processing.
+Few simple functions to help with [K-mer](https://en.wikipedia.org/wiki/K-mer) counting and analysis of [FASTQ](https://en.wikipedia.org/wiki/FASTQ_format) data files. Also contains functions for splitter (map) and agregator (reduce) type of steps to help with parallel processing. 
+
+Note that a thought needs to be put into what underlying file system that would be used (e.g. HDFS, EFS etc.) and whether a physical splitting of the file would be performed prior to the counting.
 
 ### Installation
  1. Add following maven coordinates into titanoboa's external dependencies file: [![Clojars Project](https://img.shields.io/clojars/v/io.titanoboa.tasklet/kmer.svg)](https://clojars.org/io.titanoboa.tasklet/kmer)
