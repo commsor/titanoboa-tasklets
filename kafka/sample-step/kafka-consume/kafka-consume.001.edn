@@ -1,0 +1,15 @@
+{         :type :kafka-consume,
+          :supertype :tasklet,
+          :workload-fn #titanoboa.exp/Expression{:value "io.titanoboa.tasklet.kafka/consume",
+                                                 :type "clojure"},
+          :properties {:kafka-topics ["test-topic"],
+                       :poll-options {:dvlopt.kafka/timeout [1
+                                                             :seconds]},
+                       :kafka-consumer-config {:dvlopt.kafka/nodes [["localhost"
+                                                                     9092]],
+                                               :dvlopt.kafka/deserializer.key :long,
+                                               :dvlopt.kafka/deserializer.value :string,
+                                               :dvlopt.kafka.in/configuration {"auto.offset.reset" "earliest",
+                                                                               "enable.auto.commit" false,
+                                                                               "max.poll.records" "50",
+                                                                               "group.id" "my-group"}}}}

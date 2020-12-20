@@ -1,0 +1,13 @@
+{         :type :kafka-produce,
+          :supertype :tasklet,
+          :workload-fn #titanoboa.exp/Expression{:value "io.titanoboa.tasklet.kafka/produce",
+                                                 :type "clojure"},
+          :properties {:kafka-producer-config {:dvlopt.kafka/nodes [["localhost"
+                                                                     9092]],
+                                               :dvlopt.kafka/serializer.key :long,
+                                               :dvlopt.kafka/serializer.value :string,
+                                               :dvlopt.kafka.out/configuration {"client.id" "my-producer",
+                                                                                "transactional.id" "some transaction id"}},
+                       :records [{:topic "test-topic",
+                                  :key 123,
+                                  :value "Hello World!"}]}}
