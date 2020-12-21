@@ -437,7 +437,7 @@ io.titanoboa.tasklet.pdf/generate-pdf
  ---
  ---
  
-   ## Kafka <img width="28" height="28" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/kafka.svg"/>
+   ## Kafka Producer & Consumer <img width="28" height="28" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/kafka.svg"/>
 
 A simple Kafka producer and consumer. Primarily uses [dvlopt/kafka](https://github.com/dvlopt/kafka) library. Refer to the library's documentation for detailed information on the generation process and all supported properties.
 
