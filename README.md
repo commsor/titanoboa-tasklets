@@ -16,21 +16,23 @@ This repository contains sample ready-made steps for [titanoboa](https://titanob
 
 * [AWS SQS](#aws-sqs-) <img width="28" height="28" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/aws-sqs.svg"/> 
 
-[JDBC Client](#jdbc-client-) <img width="28" height="28" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/jdbc.svg"/>
-
-[Http Client](#http-client-) <img width="28" height="28" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/http-client.svg"/>
-
-[Smtp Client](#smtp-client-) <img width="28" height="28" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/smtp.svg"/>
-
-[SFTP Client](#ssh-and-sftp-) <img width="28" height="28" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/custom.svg"/>
-
-[SSH Client](#ssh-and-sftp-) <img width="26" height="26" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/ssh.svg"/>
-
-[PDF Generation](#pdf-) <img width="28" height="28" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/pdf-generation.svg"/>
-
 🧬 **Bioinformatics** :microscope:
 
 * 🧬 [K-mer Count](#-k-mer-count)
+
+[Http Client](#http-client-) <img width="28" height="28" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/http-client.svg"/>
+
+[JDBC Client](#jdbc-client-) <img width="28" height="28" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/jdbc.svg"/>
+
+[Kafka](#kafka-) <img width="28" height="28" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/kafka.svg"/>
+
+[PDF Generation](#pdf-) <img width="28" height="28" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/pdf-generation.svg"/>
+
+[SFTP Client](#ssh-and-sftp-) <img width="28" height="28" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/custom.svg"/>
+
+[Smtp Client](#smtp-client-) <img width="28" height="28" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/smtp.svg"/>
+
+[SSH Client](#ssh-and-sftp-) <img width="26" height="26" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/ssh.svg"/>
 
 ---
 
@@ -431,6 +433,65 @@ io.titanoboa.tasklet.pdf/generate-pdf
  :pdf-metadata {:bottom-margin 10, :creator "Jane Doe", :doc-header ["inspired by" "William Shakespeare"], :right-margin 50, :left-margin 10, :footer "page", :header "page header", :size "a4", :title "Test doc", :author "John Doe", :top-margin 20, :subject "Some subject"}}
  :workload-fn #titanoboa.exp.Expression{:value "io.titanoboa.tasklet.pdf/generate-pdf", :type "clojure"}}
 ```
+
+ ---
+ ---
+ 
+   ## Kafka <img width="28" height="28" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/kafka.svg"/>
+
+A simple Kafka producer and consumer. Primarily uses [dvlopt/kafka](https://github.com/dvlopt/kafka) library. Refer to the library's documentation for detailed information on the generation process and all supported properties.
+
+### Installation
+ 1. Add following maven coordinates into titanoboa's external dependencies file: [![Clojars Project](https://img.shields.io/clojars/v/io.titanoboa.tasklet/kafka.svg)](https://clojars.org/io.titanoboa.tasklet/kafka)
+ 2. Require namespace: `io.titanoboa.tasklet.kafka`
+
+### Usage
+#### Producer
+#### :workload-fn
+```clojure
+io.titanoboa.tasklet.kafka/produce
+```
+#### Sample Step Definition
+```clojure
+{:type        :kafka-produce,
+ :supertype   :tasklet,
+ :workload-fn #titanoboa.exp/Expression{:value "io.titanoboa.tasklet.kafka/produce",
+                                        :type  "clojure"},
+ :properties  {:kafka-producer-config {:dvlopt.kafka/nodes             [["localhost"
+                                                                         9092]],
+                                       :dvlopt.kafka/serializer.key    :long,
+                                       :dvlopt.kafka/serializer.value  :string,
+                                       :dvlopt.kafka.out/configuration {"client.id"        "my-producer",
+                                                                        "transactional.id" "some transaction id"}},
+               :records               [{:topic "test-topic",
+                                        :key   123,
+                                        :value "Hello World!"}]}} 
+```
+
+#### Consumer
+#### :workload-fn
+```clojure
+io.titanoboa.tasklet.kafka/consume
+```
+#### Sample Step Definition
+```clojure
+{:type        :kafka-consume,
+ :supertype   :tasklet,
+ :workload-fn #titanoboa.exp/Expression{:value "io.titanoboa.tasklet.kafka/consume",
+                                        :type  "clojure"},
+ :properties  {:kafka-topics          ["test-topic"],
+               :poll-options          {:dvlopt.kafka/timeout [1
+                                                              :seconds]},
+               :kafka-consumer-config {:dvlopt.kafka/nodes              [["localhost"
+                                                                          9092]],
+                                       :dvlopt.kafka/deserializer.key   :long,
+                                       :dvlopt.kafka/deserializer.value :string,
+                                       :dvlopt.kafka.in/configuration   {"auto.offset.reset"  "earliest",
+                                                                         "enable.auto.commit" false,
+                                                                         "max.poll.records"   "50",
+                                                                         "group.id"           "my-group"}}}}
+ ```
+
 
  ---
  ---
