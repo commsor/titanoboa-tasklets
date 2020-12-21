@@ -24,7 +24,7 @@ This repository contains sample ready-made steps for [titanoboa](https://titanob
 
 [JDBC Client](#jdbc-client-) <img width="28" height="28" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/jdbc.svg"/>
 
-[Kafka](#kafka-) <img width="28" height="28" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/kafka.svg"/>
+[Kafka Producer & Consumer](#kafka-producer--consumer-) <img width="28" height="28" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/kafka.svg"/>
 
 [PDF Generation](#pdf-) <img width="28" height="28" align="left" src="https://github.com/mikub/titanoboa-tasklets/blob/master/_doc/step-icons/pdf-generation.svg"/>
 
