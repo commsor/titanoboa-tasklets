@@ -233,13 +233,13 @@ Performs a JDBC query and returns corresponding data. Note that [code of jdbc ta
 
 ### Installation
  1. Add whatever jdbc driver you need to use to titanoboa's ./lib folder
- 2. Require namespace: `io.titanoboa.tasklet.jdbc` in titanoboa's external dependencies file. You may also need to require `titanoboa.system.jdbc/jdbc-pool` (see point 3.)
+ 2. Require namespace: `titanoboa.tasklet.jdbc` in titanoboa's external dependencies file. You may also need to require `titanoboa.system.jdbc` (see point 3.)
  3. Do not forget to also define and configure corresponding jdbc system for DB connection pooling in your [server configuration](https://github.com/mikub/titanoboa/wiki/Server-Configuration#server-properties) (in this [example](https://github.com/mikub/titanoboa/wiki/Server-Configuration#non-core-systems) there is a connection pool system :test-db that is using [`titanoboa.system.jdbc/jdbc-pool`](https://github.com/mikub/titanoboa/blob/master/src/clj/titanoboa/system/jdbc.clj)
 
 ### Usage
 #### :workload-fn
 ```clojure
-io.titanoboa.tasklet.jdbc/query
+titanoboa.tasklet.jdbc/query
 ```
 #### Sample Step Definition
 ```clojure
