@@ -1,0 +1,9 @@
+{:type :slack-get-chat-permalink
+ :supertype :tasklet
+ :description "Returns permalink for given Slack chat timestamp. It is returned as :properties in the return map.\n  :return-code in the properties map is true if the call was successful, false otherwise."
+ :workload-fn #titanoboa.exp.Expression{:value "io.titanoboa.tasklet.slack/get-chat-permalink"
+                                        :type "clojure"}
+ :properties  {:token ""
+               :channel ""
+               :message_ts ""
+               :response-property-name :chat-permalink}}
