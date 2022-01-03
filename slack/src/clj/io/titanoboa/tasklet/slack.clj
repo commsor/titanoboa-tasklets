@@ -1,7 +1,7 @@
 (ns io.titanoboa.tasklet.slack
   (:require [clj-http.client :as client]))
 
-(defn get-channel-info [{:keys [token channel response-property-name] :as properties}]
+(defn get-channel-info [{:keys [token channel response-property-name] :or {response-property-name :channel-info} :as properties}]
   "Returns channel's information for given Slack channel id. These are returned as :properties in the return map.
   :return-code in the properties map is true if the call was successful, false otherwise."
   (let [response (client/request {:url "https://slack.com/api/conversations.info"
@@ -13,7 +13,7 @@
     {:properties {response-property-name (:body response)}
      :return-code (get-in response [:body :ok])}))
 
-(defn get-chat-permalink [{:keys [token channel message_ts response-property-name] :as properties}]
+(defn get-chat-permalink [{:keys [token channel message_ts response-property-name] :or {response-property-name :chat-permalink} :as properties}]
   "Returns permalink for given Slack chat timestamp. It is returned as :properties in the return map.
   :return-code in the properties map is true if the call was successful, false otherwise."
   (let [response (client/request {:url "https://slack.com/api/chat.getPermalink"
@@ -26,7 +26,7 @@
     {:properties {response-property-name (:body response)}
      :return-code (get-in response [:body :ok])}))
 
-(defn post-message [{:keys [token channel blocks as_user response-property-name thread_ts] :as properties}]
+(defn post-message [{:keys [token channel blocks as_user response-property-name thread_ts] :or {response-property-name :post-message-response} :as properties}]
   "Sends a Slack message (using :blocks) to given channel.
   If the thread_ts is provided, the message will be a response to given parent thread.
   :return-code in the properties map is true if the call was successful, false otherwise."
