@@ -1,0 +1,11 @@
+{:type :slack-post-message
+ :supertype :tasklet
+ :description "Returns permalink for given Slack chat timestamp. It is returned as :properties in the return map.\n  :return-code in the properties map is true if the call was successful, false otherwise."
+ :workload-fn #titanoboa.exp.Expression{:value "io.titanoboa.tasklet.slack/post-message"
+                                        :type "clojure"}
+ :properties  {:token ""
+               :channel ""
+               :thread_ts ""
+               :blocks #titanoboa.exp.Expression{:value  "(-> [{:type \"mrkdwn\"\n      :text \"Hello World!\"}]\n  cheshire.core/generate-string)" :type "clojure"}
+               :as_user false
+               :response-property-name :post-message-response}}
