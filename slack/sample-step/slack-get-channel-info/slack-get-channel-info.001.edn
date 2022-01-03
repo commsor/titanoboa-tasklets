@@ -1,0 +1,8 @@
+{:type :slack-get-channel-info
+ :supertype :tasklet
+ :description "Returns channel's information for given Slack channel id. These are returned as :properties in the return map.\n  :return-code in the properties map is true if the call was successful, false otherwise."
+ :workload-fn #titanoboa.exp.Expression{:value "io.titanoboa.tasklet.slack/get-channel-info"
+                                        :type "clojure"}
+ :properties  {:token ""
+               :channel ""
+               :response-property-name :channel-info}}
