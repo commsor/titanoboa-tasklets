@@ -1,6 +1,6 @@
 {:type :slack-post-message
  :supertype :tasklet
- :description "Returns permalink for given Slack chat timestamp. It is returned as :properties in the return map.\n  :return-code in the properties map is true if the call was successful, false otherwise."
+ :description "Posts a new Slack chat message into the specified Slack channel. When thread_ts property is used then the message is posted as a response into given thread.\n  :return-code in the properties map is true if the call was successful, false otherwise."
  :workload-fn #titanoboa.exp.Expression{:value "io.titanoboa.tasklet.slack/post-message"
                                         :type "clojure"}
  :properties  {:token ""
